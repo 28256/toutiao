@@ -1,0 +1,15 @@
+/target/
+.metadata/
+*.iws
+*.iml
+*.ipr
+.settings
+.project
+.classpath
+.externalToolBuilders
+*.class
+*svn/
+.idea/
+*.jar
+~*
+*.log
