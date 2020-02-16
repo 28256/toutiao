@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class SettingController {
+	
+	//master 测试文件外未冲突
+	public void good(){
+		
+	}
+	
     @RequestMapping("/setting")
     @ResponseBody
     public String setting() {

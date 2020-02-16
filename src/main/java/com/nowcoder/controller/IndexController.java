@@ -29,6 +29,11 @@ public class IndexController {
 
     @Autowired
     private ToutiaoService toutiaoService;
+    
+    //master 测试冲突
+    public void masterMerge(){
+    	logger.info("very good!");
+    }
 
     @RequestMapping(path = {"/", "/index"}, method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
@@ -130,5 +135,10 @@ public class IndexController {
     @ResponseBody
     public String error(Exception e) {
         return "error:" + e.getMessage();
+    }
+    
+    // master 测试文件内未冲突
+    public String testInnerNoChongtu(){
+    	return "文件内未冲突!";
     }
 }
