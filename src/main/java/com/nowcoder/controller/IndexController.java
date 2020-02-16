@@ -29,6 +29,11 @@ public class IndexController {
 
     @Autowired
     private ToutiaoService toutiaoService;
+    
+    //develop 测试冲突
+    public void developMerge(){
+    	logger.info("very good!");
+    }
 
     @RequestMapping(path = {"/", "/index"}, method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
