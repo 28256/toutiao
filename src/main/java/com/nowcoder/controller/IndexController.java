@@ -30,8 +30,8 @@ public class IndexController {
     @Autowired
     private ToutiaoService toutiaoService;
     
-    //master 测试冲突
-    public void masterMerge(){
+    //develop 测试冲突
+    public void developMerge(){
     	logger.info("very good!");
     }
 
@@ -137,7 +137,7 @@ public class IndexController {
         return "error:" + e.getMessage();
     }
     
-    // master 测试文件内未冲突
+    // develop 测试文件内未冲突
     public String testInnerNoChongtu(){
     	return "文件内未冲突!";
     }
