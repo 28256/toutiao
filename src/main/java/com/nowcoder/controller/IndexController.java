@@ -30,9 +30,9 @@ public class IndexController {
     @Autowired
     private ToutiaoService toutiaoService;
     
-    //master 测试冲突
+    //master 测试冲突second save
     public void masterMerge(){
-    	logger.info("very good!");
+    	logger.info("very good1!");
     }
 
     @RequestMapping(path = {"/", "/index"}, method = {RequestMethod.GET, RequestMethod.POST})
