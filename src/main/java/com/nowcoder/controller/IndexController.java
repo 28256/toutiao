@@ -30,11 +30,16 @@ public class IndexController {
     @Autowired
     private ToutiaoService toutiaoService;
     
-    //develop 测试冲突
+    //develop 测试冲突+second
     public void developMerge(){
     	logger.info("very good!");
     }
 
+    //第二次commit，测试2
+    public void testCommit(){
+    	logger.info("commit second");
+    }
+    
     @RequestMapping(path = {"/", "/index"}, method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public String index(HttpSession session) {
