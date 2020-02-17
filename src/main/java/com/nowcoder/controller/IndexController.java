@@ -34,7 +34,16 @@ public class IndexController {
     public void masterMerge(){
     	logger.info("very good1!");
     }
+    //develop 测试冲突+second
+    public void developMerge(){
+    	logger.info("very good!");
+    }
 
+    //第二次commit，测试2
+    public void testCommit(){
+    	logger.info("commit second");
+    }
+    
     @RequestMapping(path = {"/", "/index"}, method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public String index(HttpSession session) {
@@ -137,7 +146,7 @@ public class IndexController {
         return "error:" + e.getMessage();
     }
     
-    // master 测试文件内未冲突
+    // develop 测试文件内未冲突
     public String testInnerNoChongtu(){
     	return "文件内未冲突!";
     }
