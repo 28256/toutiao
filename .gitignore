@@ -1,5 +1,6 @@
 /target/
 .metadata/
+/.idea/*
 *.iws
 *.iml
 *.ipr
@@ -9,7 +10,6 @@
 .externalToolBuilders
 *.class
 *svn/
-.idea/
 *.jar
 ~*
 *.log
