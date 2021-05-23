@@ -23,27 +23,13 @@ import java.util.*;
 /**
  * Created by nowcoder on 2016/6/26.
  */
-@Controller
+//@Controller
 public class IndexController {
     private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
     @Autowired
     private ToutiaoService toutiaoService;
-    
-    //master 测试冲突second save
-    public void masterMerge(){
-    	logger.info("very good1!");
-    }
-    //develop 测试冲突+second
-    public void developMerge(){
-    	logger.info("very good!");
-    }
 
-    //第二次commit，测试2
-    public void testCommit(){
-    	logger.info("commit second");
-    }
-    
     @RequestMapping(path = {"/", "/index"}, method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public String index(HttpSession session) {
@@ -144,10 +130,5 @@ public class IndexController {
     @ResponseBody
     public String error(Exception e) {
         return "error:" + e.getMessage();
-    }
-    
-    // develop 测试文件内未冲突
-    public String testInnerNoChongtu(){
-    	return "文件内未冲突!";
     }
 }
