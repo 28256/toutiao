@@ -3,6 +3,8 @@ package com.nowcoder;
 import com.nowcoder.shiro.MyRealm;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.subject.Subject;
 import org.junit.Test;
@@ -18,19 +20,28 @@ public class MyAuthencationTest {
         DefaultSecurityManager defaultSecurityManager = new DefaultSecurityManager();
         defaultSecurityManager.setRealm(myRealm);
 
+        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
+        hashedCredentialsMatcher.setHashAlgorithmName("md5");
+        hashedCredentialsMatcher.setHashIterations(1);
+        myRealm.setCredentialsMatcher(hashedCredentialsMatcher);
+
         // 2.主体提交认证请求
         SecurityUtils.setSecurityManager(defaultSecurityManager); // 设置SecurityManager环境
         Subject subject = SecurityUtils.getSubject(); // 获取当前主体
 
-        UsernamePasswordToken token = new UsernamePasswordToken("root", "12345ww");
+        UsernamePasswordToken token = new UsernamePasswordToken("root", "123456");
         subject.login(token); // 登录
 
         // subject.isAuthenticated()方法返回一个boolean值,用于判断用户是否认证成功
         System.out.println("isAuthenticated:" + subject.isAuthenticated()); // 输出true
         // 判断subject是否具有admin和user两个角色权限,如没有则会报错
         subject.checkRoles("admin", "user");
-//        subject.checkRole("xxx"); // 报错
+//        subject.checkRole("xxx"); // 报 错
         // 判断subject是否具有user:add权限
-        subject.checkPermission("user:add");
+        subject.checkPermission("can update");
     }
+
+
+
+
 }

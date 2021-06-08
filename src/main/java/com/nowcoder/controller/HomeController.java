@@ -21,7 +21,7 @@ import java.util.Map;
 /**
  * Created by nowcoder on 2016/7/2.
  */
-@Controller
+//@Controller
 public class HomeController {
     @Autowired
     NewsService newsService;

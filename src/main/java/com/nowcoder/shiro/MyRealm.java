@@ -7,9 +7,11 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.realm.SimpleAccountRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -25,7 +27,7 @@ public class MyRealm extends AuthorizingRealm {
      */
     Map<String,String> userMap = new HashMap<>(1);
     {
-        userMap.put("root","12345");
+        userMap.put("root","d2f0e963198965722fd22e9ab414efbc");//加密后的密码
         super.setName("myRealm");
     }
 
@@ -67,6 +69,7 @@ public class MyRealm extends AuthorizingRealm {
         }
 
         SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(userName,passWord,"myRealm");
+        simpleAuthenticationInfo.setCredentialsSalt(ByteSource.Util.bytes("mark"));//加盐
         return simpleAuthenticationInfo;
     }
 
@@ -89,7 +92,7 @@ public class MyRealm extends AuthorizingRealm {
      */
     private Set<String> getRolesGetByUserName(String userName){
         Set<String> roles = new HashSet<>();
-        roles.add("admain");
+        roles.add("admin");
         roles.add("user");
         return roles;
     }
@@ -99,5 +102,11 @@ public class MyRealm extends AuthorizingRealm {
      */
     private String getPassWordByUserName(String userName){
         return userMap.get(userName);
+    }
+
+
+    public static void main(String[] args) {
+        Md5Hash md5Hash = new Md5Hash("12345","mark");//md5加密，加盐
+        System.out.printf(md5Hash.toString());
     }
 }
